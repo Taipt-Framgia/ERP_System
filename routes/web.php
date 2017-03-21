@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::auth();
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
 });
