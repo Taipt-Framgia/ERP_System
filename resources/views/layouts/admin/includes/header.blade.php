@@ -143,7 +143,7 @@
                             </div>
                             <div class="pull-right">
                                 {{ Form::open(['action' => 'Auth\LoginController@logout']) }}
-                                    {{Form::submit(trans('language.logout'), ['class' => 'btn btn-default'])}}
+                                    {{Form::submit(trans('auth.logout'), ['class' => 'btn btn-default btn-flat'])}}
                                 {{ Form::close()}}
                             </div>
                         </li>

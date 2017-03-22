@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'dropbox',
 
     /*
     |--------------------------------------------------------------------------
@@ -60,6 +60,12 @@ return [
             'secret' => 'your-secret',
             'region' => 'your-region',
             'bucket' => 'your-bucket',
+        ],
+
+        'dropbox' => [
+            'driver' => 'dropbox',
+            'accessToken' => 'edX45ISfnjAAAAAAAAAACizY2NawTfNWdCVntiBw4BXj0cpuL0P2rLpTG10RSfY-',
+            'appSecret' => 'yz1ka8hg81gj5vu',
         ],
 
     ],

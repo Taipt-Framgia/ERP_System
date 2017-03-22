@@ -25,6 +25,14 @@ elixir(mix => {
         ['node_modules/admin-lte/plugins', '/adminlte/plugins'],
         ['node_modules/font-awesome/fonts', '/font-awesome/fonts'],
         ['node_modules/font-awesome/css', '/font-awesome/css'],
+        ['node_modules/sweetalert/dist/sweetalert.css', '/css'],
+        ['node_modules/sweetalert/dist/sweetalert.min.js', '/js'],
+        ['node_modules/select2/dist/css/', '/css'],
+        ['node_modules/select2/dist/js/', '/js/select2'],
+        ['vendor/studio-42/elfinder/css', '/elfinder/css'],
+        ['vendor/studio-42/elfinder/img', '/elfinder/img'],
+        ['vendor/studio-42/elfinder/js', '/elfinder/js'],
+        ['vendor/studio-42/elfinder/sounds', '/elfinder/sounds'],
     ];
 
     for (var i = 0; i < assetsCopy.length; i++) {
