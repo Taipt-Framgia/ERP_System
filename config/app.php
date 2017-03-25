@@ -177,7 +177,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\DropboxServiceProvider::class,
+        //external service providers
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
 
     ],
 
