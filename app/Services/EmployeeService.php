@@ -15,7 +15,7 @@ class EmployeeService extends BaseService
             'date_of_birth' => 'required|date',
             'address' => 'required',
             'position' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|regex:/^0[0-9]{9,10}/',
             'department_id' => 'required',
         ];
 

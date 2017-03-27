@@ -1,7 +1,6 @@
 $(document).ready(() => {
     $(".js-select2").select2({
         ajax: {
-            url: "https://api.github.com/search/repositories",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -11,6 +10,7 @@ $(document).ready(() => {
                 };
             },
             processResults: function (data, params) {
+            console.log(data);
             // parse the results into the format expected by Select2
             // since we are using custom formatting functions we do not need to
             // alter the remote JSON data, except to indicate that infinite
@@ -33,13 +33,13 @@ $(document).ready(() => {
                 return 'Custom styled placeholder text';
             }
 
-            return data.text;
+            return data.name;
         }, // omitted for brevity, see the source of this page
         templateSelection: template // omitted for brevity, see the source of this page
     });
 
     function template(data, container)
     {
-        return data.text;
+        return data.name;
     }
 });

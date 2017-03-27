@@ -28,31 +28,32 @@
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="{!! set_active(['file']) !!}"><a href={{action('FilesController@index')}}> <i class="fa fa-dashboard"></i> <span>{{ trans('language.file_manager') }}</span></a></li>
+            <li class="{!! set_active(['test']) !!}"><a href={{action('TestController@index')}}> <i class="fa fa-dashboard"></i> <span>{{ trans('global.file_manager') }} 1</span></a></li>
+            <li class="{!! set_active(['file']) !!}"><a href={{action('FilesController@index')}}> <i class="fa fa-dashboard"></i> <span>{{ trans('global.file_manager') }}</span></a></li>
             <li class="treeview {!! set_active(['employee', 'employee/create']) !!}">
                 <a href="#">
                     <i class="fa fa-home"></i>
-                    <span>{{ trans('language.employee_manager') }}</span>
+                    <span>{{ trans('global.employee_manager') }}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{!! set_active(['employee']) !!}"><a href={{action('EmployeeController@index')}}><i class="fa fa-circle-o"></i> {{ trans('language.employee_list') }}</a></li>
-                    <li class="{!! set_active(['employee/create']) !!}"><a href={{action('EmployeeController@create')}}><i class="fa fa-circle-o"></i> {{ trans('language.add_employee') }}</a></li>
+                    <li class="{!! set_active(['employee']) !!}"><a href={{action('EmployeeController@index')}}><i class="fa fa-circle-o"></i> {{ trans('global.employee_list') }}</a></li>
+                    <li class="{!! set_active(['employee/create']) !!}"><a href={{action('EmployeeController@create')}}><i class="fa fa-circle-o"></i> {{ trans('global.add_employee') }}</a></li>
                 </ul>
             </li>
             <li class="treeview {!! set_active(['department', 'department/create']) !!}">
                 <a href="#">
                     <i class="fa fa-home"></i>
-                    <span>{{ trans('language.department_manager') }}</span>
+                    <span>{{ trans('global.department_manager') }}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{!! set_active(['department']) !!}"><a href={{action('DepartmentController@index')}}><i class="fa fa-circle-o"></i> {{ trans('language.department_list') }}</a></li>
-                    <li class="{!! set_active(['department/create']) !!}"><a href={{action('DepartmentController@create')}}><i class="fa fa-circle-o"></i> {{ trans('language.add_department') }}</a></li>
+                    <li class="{!! set_active(['department']) !!}"><a href={{action('DepartmentController@index')}}><i class="fa fa-circle-o"></i> {{ trans('global.department_list') }}</a></li>
+                    <li class="{!! set_active(['department/create']) !!}"><a href={{action('DepartmentController@create')}}><i class="fa fa-circle-o"></i> {{ trans('global.add_department') }}</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

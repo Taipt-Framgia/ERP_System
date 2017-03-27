@@ -8,6 +8,6 @@ class TestController extends Controller
 {
     public function index()
     {
-        return view('vendor.elfinder.elfinder', ['dir' => 'packages/barryvdh/elfinder', 'locale' => 'vi']);
+        return view('test.index', ['locale' => 'vi']);
     }
 }

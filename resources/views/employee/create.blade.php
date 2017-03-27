@@ -9,24 +9,24 @@
             </div>
             <div class="box-body">
                 {{ Form::open(['action' => 'EmployeeController@store','class' => 'form-horizontal']) }}
-                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
                         {{Form::label('first_name', trans('language.employee_first_name'), ['class' => 'col-sm-2 control-label'])}}
                         <div class="col-sm-10">
                             {{Form::text('first_name', '', ['class' => 'form-control'])}}
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
                         {{Form::label('last_name', trans('language.employee_last_name'), ['class' => 'col-sm-2 control-label'])}}
                         <div class="col-sm-10">
                             {{Form::text('last_name', '', ['class' => 'form-control'])}}
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {{Form::label('dob', trans('language.employee_dob'), ['class' => 'col-sm-2 control-label'])}}
+                    <div class="form-group {{ $errors->has('date_of_birth') ? 'has-error' : '' }}">
+                        {{Form::label('date_of_birth', trans('language.employee_dob'), ['class' => 'col-sm-2 control-label'])}}
                         <div class="col-sm-10">
-                            {{Form::date('dob', '', ['class' => 'form-control'])}}
+                            {{Form::date('date_of_birth', '', ['class' => 'form-control'])}}
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('position') ? 'has-error' : '' }}">
                         {{Form::label('position', trans('language.position'), ['class' => 'col-sm-2 control-label'])}}
                         <div class="col-sm-10">
                             {{Form::text('position', '', ['class' => 'form-control'])}}
@@ -51,17 +51,17 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
                         {{Form::label('phone', trans('language.phone'), ['class' => 'col-sm-2 control-label'])}}
                         <div class="col-sm-10">
                             {{Form::text('phone', '', ['class' => 'form-control'])}}
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('department_id') ? 'has-error' : '' }}">
                         {{Form::label('department_id', trans('language.department'), ['class' => 'col-sm-2 control-label'])}}
                         <div class="col-sm-10">
-                            {{Form::select('department_id', [], null, ['class' => 'js-select2 col-sm-2 control-label'])}}
+                            {{Form::select('department_id', [], null, ['class' => 'js-select2 col-sm-2 control-label', 'data-ajax--url' => action('DepartmentController@apiDepartment')])}}
                         </div>
                     </div>
             </div>
