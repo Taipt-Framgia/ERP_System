@@ -29,10 +29,8 @@ elixir(mix => {
         ['node_modules/sweetalert/dist/sweetalert.min.js', '/js'],
         ['node_modules/select2/dist/css/', '/css'],
         ['node_modules/select2/dist/js/', '/js/select2'],
-        ['vendor/studio-42/elfinder/css', '/elfinder/css'],
-        ['vendor/studio-42/elfinder/img', '/elfinder/img'],
-        ['vendor/studio-42/elfinder/js', '/elfinder/js'],
-        ['vendor/studio-42/elfinder/sounds', '/elfinder/sounds'],
+        ['node_modules/dropzone/dist/min/dropzone.min.js', '/js/dropzone'],
+        ['node_modules/dropzone/dist/min/dropzone.min.css', '/css/dropzone'],
     ];
 
     for (var i = 0; i < assetsCopy.length; i++) {

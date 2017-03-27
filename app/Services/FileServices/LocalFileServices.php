@@ -15,20 +15,58 @@ class LocalFileServices extends FileServices
     {
         $allFilesAndFolders = [];
         $path = $path ?? $this->rootPath;
-        $files = Storage::files($path);
-        $folders = Storage::directories($path);
+        if ($path != '' && $path != $this->rootPath) {
+            if (!Storage::disk('custom')->exists($path)) {
+                throw new Exception('path not found', 404);
+            }
+        }
+        $files = Storage::disk('custom')->files($path);
+        $folders = Storage::disk('custom')->directories($path);
         $allFilesAndFolders['files'] = $files;
         $allFilesAndFolders['folders'] = $folders;
 
         return $allFilesAndFolders;
     }
 
-    public function create($folderName, $currentPath)
+    public function createFolder($folderName, $currentPath)
     {
-        if (Storage::disk('local')->exists($currentPath . '/' . $folderName)) {
+        if (Storage::disk('custom')->exists($currentPath . '/' . $folderName)) {
             return false;
         }
 
-        return Storage::makeDirectory($currentPath . '/' . $folderName);
+        return Storage::disk('custom')->makeDirectory($currentPath . '/' . $folderName);
+    }
+
+    public function deleteFolder($path, $type)
+    {
+        $result;
+        switch ($type) {
+            case 'folder':
+                $result = Storage::disk('custom')->deleteDirectory($path);
+                break;
+
+            default:
+                $result = Storage::disk('custom')->delete($path);
+                break;
+        }
+
+        return $result;
+    }
+
+    public function fileValidate($input)
+    {
+        return parent::fileValidate($input);
+    }
+
+    public function uploadFile($path, $file)
+    {
+        $path =  $path ? $path : $this->rootPath;
+
+        return Storage::disk('custom')->putFileAs($path, $file, $file->getClientOriginalName());
+    }
+
+    public function getFile($path)
+    {
+        return Storage::disk('custom')->get($path);
     }
 }

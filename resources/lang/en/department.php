@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return[
 	'department_name' => 'Department Name',
@@ -9,5 +9,10 @@ return[
 	'id' => 'ID',
 	'action' => 'Action',
 	'delete' => 'Delete',
-	'edit' => 'edit',
+	'edit' => 'Edit',
+    'add_successed' => 'Add Department Successfully',
+    'no_parent' => 'No Parent',
+    'disk_path' => 'Disk Path',
+    'add_failed' => 'Add Department Failed',
+    'department_parent' => 'Department Parent',
 ];

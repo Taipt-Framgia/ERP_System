@@ -24,6 +24,9 @@
                                     <td>{{$department->address}}</td>
                                     <td>{{$department->description}}</td>
                                     <td>
+                                        <a class="btn btn-flat btn-success" href={{action('DepartmentController@index', ['parent' => $department->id])}}>
+                                            {{ trans('department.sub_department') }}
+                                        </a>
                                         <a class="btn btn-flat btn-info" href={{action('DepartmentController@edit', ['$department' => $department->id])}}>
                                             {{ trans('department.edit') }}
                                         </a>

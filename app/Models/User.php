@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Hash;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'email',
+        'password',
+        'role',
+        'department_id',
     ];
 
     /**
@@ -26,4 +29,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role == config('user.role.admin');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Models\Department');
+    }
+
+    public function filePermissions()
+    {
+        return $this->hasMany('App\Models\FilePermission');
+    }
 }
