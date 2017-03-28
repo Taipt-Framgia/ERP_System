@@ -67,4 +67,13 @@ class DepartmentController extends Controller
 
         return redirect()->back()->with(['error' => trans('department.delete_failed')]);
     }
+
+    public function apiDepartment(Request $request)
+    {
+        $q = $request->input('q');
+        $dataReturn = [];
+        $dataReturn['items'] = DepartmentService::apiDepartmentLists($q);
+
+        return $dataReturn;
+    }
 }

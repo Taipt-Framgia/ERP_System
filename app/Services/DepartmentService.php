@@ -59,4 +59,11 @@ class DepartmentService extends BaseService
     {
         return $department->delete();
     }
+
+    public static function apiDepartmentLists($q)
+    {
+        $department = Department::select('id', 'name')->where('name', 'like', "%$q%")->get();
+
+        return $department;
+    }
 }

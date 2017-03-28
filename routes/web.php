@@ -24,6 +24,7 @@ Route::group(['middleware' => 'logs'], function(){
         Route::get('department/edit/{department}', 'DepartmentController@edit');
         Route::post('department/update/{department}', 'DepartmentController@update');
         Route::delete('department/delete/{department}', 'DepartmentController@destroy');
+        Route::get('department/api/list', 'DepartmentController@apiDepartment');
 
         Route::get('employee', 'EmployeeController@index');
         Route::get('employee/create', 'EmployeeController@create');
