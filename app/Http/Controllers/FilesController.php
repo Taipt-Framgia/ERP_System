@@ -32,10 +32,10 @@ class FilesController extends Controller
         $currentPath = $request->input('currentPath');
         abort_if(Gate::denies('file_permission', [$currentPath, 'create']), 403, 'Unauthorized action.');
         if ($this->fileService->createFolder($folderName, $currentPath)) {
-            return response()->json(['status' => 1, 'message' => trans('language.success')]);
+            return response()->json(['status' => 1, 'message' => trans('file.create_success')]);
         }
 
-        return response()->json(['status' => 0, 'message' => trans('language.error')]);
+        return response()->json(['status' => 0, 'message' => trans('file.create_error')]);
     }
 
     public function delete(Request $request)
@@ -46,10 +46,10 @@ class FilesController extends Controller
         abort_if(Gate::denies('file_permission', [$parentPath, 'delete']), 403, 'Unauthorized action.');
 
         if ($this->fileService->deleteFolder($folderName, $type)) {
-            return response()->json(['status' => 1, 'message' => trans('language.success')]);
+            return response()->json(['status' => 1, 'message' => trans('file.delete_success')]);
         }
 
-        return response()->json(['status' => 0, 'message' => trans('language.error')]);
+        return response()->json(['status' => 0, 'message' => trans('file.delete_error')]);
     }
 
     public function uploadFile(Request $request)
@@ -64,22 +64,23 @@ class FilesController extends Controller
 
         if (count($fileInputs) == 1) {
             if (!$this->fileService->uploadFile($inputs['path'], $fileInputs[0])) {
-                return response()->json(['errors' => trans('language.success')], 422);
+                return response()->json(['errors' => trans('file.upload_error')], 422);
             }
         }
 
-        return response()->json(['message' => trans('language.success')]);
+        return response()->json(['message' => trans('file.upload_success')]);
     }
 
     public function downloadFile(Request $request)
     {
         $path = $request['path'];
         $parentPath = substr($path, 0, strrpos( $path, '/'));
+        $fileName = str_replace($parentPath . '/', '', $path);
         abort_if(Gate::denies('file_permission', [$parentPath, 'download']), 403, 'Unauthorized action.');
         $file = $this->fileService->getFile($path);
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . $path . '"');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');

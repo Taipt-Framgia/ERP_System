@@ -43,8 +43,8 @@ class FileServices
             'file' => $files,
             'extension' => $extensions,
         ], [
-            'file.*' => 'file|max:' . 1000,
-            'extension.*' => 'in:csv',
+            'file.*' => 'file|max:' . 5000,
+            'extension.*' => 'in:csv,doc,docx,pdf,xls,xlsx',
         ]);
     }
 }
