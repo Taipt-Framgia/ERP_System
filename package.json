@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "admin-lte": "^2.3.11",
+    "dropzone": "^4.3.0",
     "font-awesome": "^4.7.0",
     "select2": "^4.0.3",
     "sweetalert": "^1.1.3"

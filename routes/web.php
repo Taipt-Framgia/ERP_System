@@ -15,10 +15,13 @@ Route::group(['middleware' => 'logs'], function(){
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('/', 'AdminController@index');
-        Route::get('file', 'FilesController@index');
+        Route::get('file/show/{path?}', 'FilesController@index')->where('path', '(.*)');
         Route::post('file/create', 'FilesController@create');
-        Route::get('test', 'TestController@index');
-        Route::get('department', 'DepartmentController@index');
+        Route::post('file/delete', 'FilesController@delete');
+        Route::post('file/upload', 'FilesController@uploadFile');
+        Route::post('file/download', 'FilesController@downloadFile');
+
+        Route::get('department/show/{parent?}', 'DepartmentController@index');
         Route::get('department/create', 'DepartmentController@create');
         Route::post('department/store', 'DepartmentController@store');
         Route::get('department/edit/{department}', 'DepartmentController@edit');
@@ -32,5 +35,11 @@ Route::group(['middleware' => 'logs'], function(){
         Route::get('employee/edit/{employee}', 'EmployeeController@edit');
         Route::post('employee/update/{employee}', 'EmployeeController@update');
         Route::delete('employee/delete/{employee}', 'EmployeeController@destroy');
+
+        Route::get('permission', 'FilePermissionController@index');
+
+        Route::get('user', 'UserController@index');
+        Route::get('user/create', 'UserController@create');
+        Route::post('user/store', 'UserController@store');
     });
 });

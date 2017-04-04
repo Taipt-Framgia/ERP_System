@@ -1,32 +1,50 @@
 <?php
 namespace App\Services\FileServices;
 
+use Validator;
+
 class FileServices
 {
     protected $rootPath;
 
-    public function show()
+    protected function show()
     {
 
     }
 
-    public function createFolder()
+    protected function createFolder($folderName, $currentPath)
     {
 
     }
 
-    public function deleteFolder()
+    protected function deleteFolder($path, $type)
     {
 
     }
 
-    public function uploadFile()
+    protected function uploadFile($path, $files)
     {
 
     }
 
-    public function deleteFile()
+    protected function deleteFile()
     {
 
+    }
+
+    protected function fileValidate($files)
+    {
+        $extensions = [];
+        foreach ($files as $file) {
+            $extensions[] = $file ? strtolower($file->getClientOriginalExtension()) : null;
+        }
+
+        return Validator::make([
+            'file' => $files,
+            'extension' => $extensions,
+        ], [
+            'file.*' => 'file|max:' . 1000,
+            'extension.*' => 'in:csv',
+        ]);
     }
 }

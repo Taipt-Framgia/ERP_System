@@ -8,6 +8,7 @@ class Department extends Model
 {
     protected $fillable = [
         'name',
+        'parent_id',
         'address',
         'description',
     ];
@@ -15,5 +16,15 @@ class Department extends Model
     public function employees()
     {
         return $this->hasMany('App\Models\Employees');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('App\Models\Users');
+    }
+
+    public function filePermissions()
+    {
+        return $this->hasMany('App\Models\FilePermission');
     }
 }

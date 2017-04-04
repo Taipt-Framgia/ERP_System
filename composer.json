@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "barryvdh/laravel-elfinder": "^0.3.10",
         "doctrine/dbal": "^2.5",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "^5.3.0",

@@ -11,12 +11,12 @@
                     </a>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-flat btn-primary create-folder" data-url={{action('FilesController@create')}} data-path="{{$current_path}}">
+                    <button class="btn btn-flat btn-primary create-folder" data-url={{action('FilesController@create')}} data-path="{{$current_path}}" data-title="{{ trans('language.input') }}" data-placeholder="{{ trans('language.file_name_placeholder') }}"" data-input-error="{{ trans('language.input_error') }}">
                         {{ trans('file.new_folder') }}
                     </button>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-flat btn-primary upload-file" data-path={{$current_path}}>
+                    <button class="btn btn-flat btn-primary upload-file" data-path="{{$current_path}}">
                         {{ trans('file.upload_file') }}
                     </button>
                 </div>
@@ -37,17 +37,30 @@
                                     <span class="glyphicon glyphicon-cog dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     </span>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" class="delete-folder">{{ trans('file.delete_folder') }}</a></li>
+                                        <li><a href="" class="delete-folder" data-url={{action('FilesController@delete')}} data-path="{{$folder}}" data-title="{{ trans('language.delete') }}" data-text="{{ trans('language.delete_warning') }}" data-type="folder">{{ trans('file.delete_folder') }}</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+
                     @foreach ($files as $file)
                     <div class="file col-md-3">
-                        <a href="#" class="thumbnail">{{ str_replace($current_path . '/', '', $file) }}
-                            <img src="http://placehold.it/350x150">
-                        </a>
+                        <div class="col-md-10">
+                            <span class="thumbnail">{{ str_replace($current_path . '/', '', $file) }}
+                                <img src="http://placehold.it/350x150">
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="dropdown">
+                                <span class="glyphicon glyphicon-cog dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                </span>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="" class="delete-folder" data-url="{{action('FilesController@delete')}}" data-path="{{$file}}" data-title="{{ trans('language.delete') }}" data-text="{{ trans('language.delete_warning') }}" data-type="file">{{ trans('file.delete_file') }}</a></li>
+                                    <li><a href="" class="download-file" data-path="{{$file}}">{{ trans('file.download_file') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                 @endif
@@ -55,6 +68,12 @@
         </div>
     </div>
 </div>
+<div>
+    {{Form::open(['action' => "FilesController@downloadFile", 'id' => 'download-form'])}}
+        {{Form::hidden('path', '')}}
+    {{Form::close()}}
+</div>
+@include('elements.upload_file_modal')
 @endsection
 @section('script')
     {!! Html::script('assets/js/files_manager.js') !!}
