@@ -25,7 +25,9 @@ class ModifyTableFilePermissions extends Migration
      */
     public function down()
     {
-        $table->dropColumn('created_at');
-        $table->dropColumn('updated_at');
+        Schema::table('file_permissions', function (Blueprint $table) {
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+        });
     }
 }
